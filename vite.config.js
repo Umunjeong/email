@@ -6,4 +6,10 @@ export default defineConfig({
   server: {
     port: 7777,
   },
+  optimizeDeps: {
+    include: ["@supabase/supabase-js"],
+  },
+  define: {
+    "process.env": {},
+  },
 });

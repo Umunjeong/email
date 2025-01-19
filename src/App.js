@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Dev = styled.div`
   background-color: #3f3f3f;
   width: 100vw;
+
   height: 100vh;
   overflow: hidden;
   display: flex;

@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import {
   Dev,
   Email_From_Box,
@@ -9,12 +10,11 @@ import {
 } from "./App";
 
 import Logo from "./assets/img/Img_umunjeong-Black_Logo.png";
-
-//import { supabase } from "../../supabaseClient";
+import { supabase } from "./db/supabase";
 
 function Email() {
+  const [currentEmail, setCurrentEmail] = useState(""); // 상태로 이메일 관리
   const queryParams = new URLSearchParams(window.location.search);
-  const currentEmail = queryParams.get("email") || "unknown@example.com";
   const accessToken = queryParams.get("access_token");
 
   const handleVerification = async () => {
@@ -24,13 +24,25 @@ function Email() {
     }
 
     try {
-      const { error } = await supabase.auth.verifyOtp({
+      // Supabase에서 인증 요청
+      const { data, error } = await supabase.auth.setAuth(accessToken);
+
+      if (error) {
+        alert(`인증 실패: ${error.message}`);
+        return;
+      }
+
+      const user = data.user;
+      setCurrentEmail(user.email);
+
+      // 이메일 인증 처리
+      const { error: verificationError } = await supabase.auth.verifyOtp({
         type: "signup",
         token: accessToken,
       });
 
-      if (error) {
-        alert(`인증 실패: ${error.message}`);
+      if (verificationError) {
+        alert(`인증 실패: ${verificationError.message}`);
       } else {
         alert("이메일 인증이 성공적으로 완료되었습니다.");
       }
@@ -47,21 +59,19 @@ function Email() {
           <LogoImg src={Logo} />
         </LogoBox>
 
-        {/* 설명 */}
         <SpenBox>
           <span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재 이메일:{" "}
             <strong>{currentEmail}</strong>
             <br />
-            이 이메일로 회원가입 요청이 있어 이 이메일이 발송되었습니다.
+            회원가입의 마지막 단계입니다. 아래 버튼을 클릭하여
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;요청을 한 적이
-            없는 경우 무시하여 주시기 바랍니다.
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            회원가입을 완료해 주세요.
           </span>
         </SpenBox>
 
-        {/* 인증 버튼 */}
-        <ButtonBox onClick={handleVerification}>
+        <ButtonBox onClick={() => handleVerification()}>
           <Submit_Button>
             <span>인증하기</span>
           </Submit_Button>
