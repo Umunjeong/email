@@ -13,23 +13,22 @@ import Logo from "./assets/img/Img_umunjeong-Black_Logo.png";
 //import { supabase } from "../../supabaseClient";
 
 function Email() {
-  const currentEmail =
-    localStorage.getItem("currentEmail") || "unknown@example.com";
+  const queryParams = new URLSearchParams(window.location.search);
+  const currentEmail = queryParams.get("email") || "unknown@example.com";
+  const accessToken = queryParams.get("access_token");
 
   const handleVerification = async () => {
+    if (!accessToken) {
+      alert("토큰이 존재하지 않습니다. 이메일 링크를 확인해주세요.");
+      return;
+    }
+
     try {
-      // URL에서 access_token 가져오기
-      const queryParams = new URLSearchParams(window.location.search);
-      const accessToken = queryParams.get("access_token");
-      if (!accessToken) {
-        alert("토큰이 존재하지 않습니다. 이메일 링크를 확인해주세요.");
-        return;
-      }
-      // Supabase로 인증 요청
       const { error } = await supabase.auth.verifyOtp({
         type: "signup",
         token: accessToken,
       });
+
       if (error) {
         alert(`인증 실패: ${error.message}`);
       } else {
@@ -51,9 +50,8 @@ function Email() {
         {/* 설명 */}
         <SpenBox>
           <span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재 이메일 :
-            <strong> {currentEmail}</strong>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재 이메일:{" "}
+            <strong>{currentEmail}</strong>
             <br />
             이 이메일로 회원가입 요청이 있어 이 이메일이 발송되었습니다.
             <br />
