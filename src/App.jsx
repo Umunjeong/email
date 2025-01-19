@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   Dev,
   Email_From_Box,
@@ -61,19 +61,22 @@ function Email() {
 
         <SpenBox>
           <span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;현재 이메일:{" "}
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환영합니다! 회원가입의 모든 절차가
+            완료되었습니다.
             <strong>{currentEmail}</strong>
             <br />
-            회원가입의 마지막 단계입니다. 아래 버튼을 클릭하여
+            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;로그인으로
+            돌아가서 다시 로그인하여 주세요
             <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            회원가입을 완료해 주세요.
+            <br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <b>우문정에 오신것을 환영합니다!</b>
           </span>
         </SpenBox>
 
         <ButtonBox onClick={() => handleVerification()}>
           <Submit_Button>
-            <span>인증하기</span>
+            <span>우문정 바로가기</span>
           </Submit_Button>
         </ButtonBox>
       </Email_From_Box>
