@@ -13,7 +13,7 @@ import Logo from "./assets/img/Img_umunjeong-Black_Logo.png";
 
 function Email() {
   const handleRedirect = () => {
-    window.location.href = "https://umunjeong.netlify.app/"; // 버튼 클릭 시 해당 URL로 리다이렉트
+    window.location.href = "https://umunjeong.netlify.app/";
   };
 
   return (
