@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  Dev,
-  Email_From_Box,
+  Wrapper,
+  EmailFromBox,
   LogoBox,
   LogoImg,
   SpenBox,
   ButtonBox,
-  Submit_Button,
+  SubmitButton,
 } from "./App";
 
 import Logo from "./assets/img/Img_umunjeong-Black_Logo.png";
@@ -17,8 +17,8 @@ function Email() {
   };
 
   return (
-    <Dev>
-      <Email_From_Box>
+    <Wrapper>
+      <EmailFromBox>
         <LogoBox>
           <LogoImg src={Logo} />
         </LogoBox>
@@ -38,12 +38,12 @@ function Email() {
         </SpenBox>
 
         <ButtonBox>
-          <Submit_Button onClick={handleRedirect}>
+          <SubmitButton onClick={handleRedirect}>
             <span>우문정 바로가기</span>
-          </Submit_Button>
+          </SubmitButton>
         </ButtonBox>
-      </Email_From_Box>
-    </Dev>
+      </EmailFromBox>
+    </Wrapper>
   );
 }
 
