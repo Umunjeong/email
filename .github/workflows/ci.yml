@@ -1,7 +1,10 @@
-#과연 로컬에서 커밋 한다면 적용이 될까요~~?
 name: CI
 
 on:
+  push:
+    branches:
+      - main
+      - dev
   pull_request:
     branches:
       - main
@@ -24,7 +27,7 @@ jobs:
 
       - name: Run tests
         run: npm test -- --coverage
-        
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
