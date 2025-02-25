@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Dev = styled.div`
+export const Wrapper = styled.div`
   background-color: #3f3f3f;
   width: 100vw;
 
@@ -11,7 +11,7 @@ export const Dev = styled.div`
   align-items: center;
 `;
 
-export const Email_From_Box = styled.div`
+export const EmailFromBox = styled.div`
   background-color: white;
   width: 60vw;
   height: 64vh;
@@ -59,7 +59,7 @@ export const ButtonBox = styled.div`
   align-items: center;
 `;
 
-export const Submit_Button = styled.div`
+export const SubmitButton = styled.div`
   width: 80%;
   height: 74%;
   background-color: black;
