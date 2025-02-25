@@ -1,10 +1,7 @@
+#과연 로컬에서 커밋 한다면 적용이 될까요~~?
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-      - dev
   pull_request:
     branches:
       - main
