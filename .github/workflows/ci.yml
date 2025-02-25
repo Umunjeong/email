@@ -34,3 +34,5 @@ jobs:
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           slug: Umunjeong/email
+          comment: true
+          flags: unittests
