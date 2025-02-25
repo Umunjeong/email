@@ -1,4 +1,7 @@
-//라우터 돔 7버전 작동 안함 => 경고 발생 => future={{ v7_startTransition: true, v7_relativeSplatPath: true }} 추가하면 경고 안함
+//라우터 돔 7버전 작동 안함 => 경고 발생 => future={{ v7_startTransition: true, v7_relativeSplatPath: true }} 추가하면 경고
+//jsx사용하는 모든 파일에서 React를 받아와야 함
+//babel.config.js과 jest.config.cjs를 만들어야함
+//여러 라이브러리 설치해야함
 import React from "react";
 import "@testing-library/jest-dom"; // test돔 사용
 import { render, screen } from "@testing-library/react";
