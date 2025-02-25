@@ -7,7 +7,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "jest"
+    "test": "jest",
+    "test-codecov" : "./node_modules/.bin/jest --ci -coverage && ./node_modules/.bin/codecov"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.47.16",
