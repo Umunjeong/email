@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - dev # dev 브랜치에도 푸시 시 실행
   pull_request:
     branches:
       - main
+      - dev # dev 브랜치로의 PR에도 실행
 
 jobs:
   test:
