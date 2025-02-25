@@ -1,50 +1,16 @@
 import React from "react";
-import {
-  Wrapper,
-  EmailFromBox,
-  LogoBox,
-  LogoImg,
-  SpenBox,
-  ButtonBox,
-  SubmitButton,
-} from "./App";
+import { Route, Routes, BrowserRouter } from "react-router-dom";
 
-import Logo from "./assets/img/Img_umunjeong-Black_Logo.png";
+import { Email } from "./page/email/email";
+import { NotFound } from "./page/notFound/notFound";
 
-function Email() {
-  const handleRedirect = () => {
-    window.location.href = "https://umunjeong.netlify.app/";
-  };
-
+export const App = () => {
   return (
-    <Wrapper>
-      <EmailFromBox>
-        <LogoBox>
-          <LogoImg src={Logo} />
-        </LogoBox>
-
-        <SpenBox>
-          <span>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;환영합니다! 회원가입의 모든 절차가
-            완료되었습니다.
-            <br />
-            &nbsp;&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;로그인으로
-            돌아가서 다시 로그인하여 주세요
-            <br />
-            <br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <b>우문정에 오신것을 환영합니다!</b>
-          </span>
-        </SpenBox>
-
-        <ButtonBox>
-          <SubmitButton onClick={handleRedirect}>
-            <span>우문정 바로가기</span>
-          </SubmitButton>
-        </ButtonBox>
-      </EmailFromBox>
-    </Wrapper>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Email />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
-}
-
-export default Email;
+};
