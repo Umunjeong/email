@@ -1,4 +1,4 @@
-#과연 로컬에서 커밋 한다면 적용이 될까요~~?
+#메인에서만 접근(수정) 가능
 name: CI
 
 on:
@@ -26,7 +26,17 @@ jobs:
       - name: Run tests
         run: npm test -- --coverage
 
+      - name: Check CODECOV_TOKEN is set
+        run: |
+          if [ -z "${{ secrets.CODECOV_TOKEN }}" ]; then
+            echo "CODECOV_TOKEN is empty!"
+            exit 1
+          else
+            echo "CODECOV_TOKEN is set."
+          fi
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+
