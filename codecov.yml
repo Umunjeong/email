@@ -2,3 +2,4 @@ status:
   project: yes
   patch: yes
   changes: yes
+token: ${{ secrets.CODECOV_TOKEN }} # 환경변수로 토큰을 설정
