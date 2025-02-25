@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - main
+      - dev 
   pull_request:
     branches:
       - main
+      - dev
 
 jobs:
   test:
@@ -25,6 +27,9 @@ jobs:
 
       - name: Run tests
         run: npm test -- --coverage
+
+      - name: Output CODECOV_TOKEN
+        run: echo "CODECOV_TOKEN=${{ secrets.CODECOV_TOKEN }}" # CODECOV_TOKEN을 출력
 
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
