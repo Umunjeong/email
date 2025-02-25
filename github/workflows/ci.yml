@@ -31,5 +31,3 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          # 코드버전 환경 변수로 설정
-          version: ${{ env.CODECOV_VERSION }}
