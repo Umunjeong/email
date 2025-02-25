@@ -26,11 +26,6 @@ jobs:
       - name: Run tests
         run: npm test -- --coverage
 
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          
       - name: Check CODECOV_TOKEN is set
         run: |
           if [ -z "${{ secrets.CODECOV_TOKEN }}" ]; then
@@ -39,3 +34,8 @@ jobs:
           else
             echo "CODECOV_TOKEN is set."
           fi
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
