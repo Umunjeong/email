@@ -1,4 +1,3 @@
-#메인에서만 접근(수정) 가능
 name: CI
 
 on:
@@ -11,6 +10,8 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    env:
+      CODECOV_VERSION: "v0.1.15" # Codecov 버전을 고정
     steps:
       - name: Check out repository
         uses: actions/checkout@v2
@@ -26,16 +27,9 @@ jobs:
       - name: Run tests
         run: npm test -- --coverage
 
-      - name: Check CODECOV_TOKEN is set
-        run: |
-          if [ -z "${{ secrets.CODECOV_TOKEN }}" ]; then
-            echo "CODECOV_TOKEN is empty!"
-            exit 1
-          else
-            echo "CODECOV_TOKEN is set."
-          fi
-
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
+          # 코드버전 환경 변수로 설정
+          version: ${{ env.CODECOV_VERSION }}
