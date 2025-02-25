@@ -2,3 +2,11 @@ status:
   project: yes
   patch: yes
   changes: yes
+  project:
+    default:
+      target: 80%    # 목표 커버리지 비율
+      threshold: 2%  # 변경분에 대한 허용 오차
+
+comment:
+     layout: "condensed_header, condensed_files, condensed_footer"
+     hide_project_coverage: TRUE
