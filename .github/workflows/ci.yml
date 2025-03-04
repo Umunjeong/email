@@ -7,11 +7,10 @@ on:
   pull_request:
     branches:
       - main
-      - dev
     types: [opened, synchronize]
 
 jobs:
-  test:
+  Management_Open_Pr:
     runs-on: ubuntu-latest
     env:
       CODECOV_VERSION: "v0.1.15"
@@ -38,8 +37,7 @@ jobs:
           slug: Umunjeong/email
           flags: unittests
 
-  # 'merge' 이후에만 실행되는 추가적인 작업을 설정하려면, push 이벤트도 추가할 수 있습니다.
-  coverage-on-merge:
+  Management_Open_merge:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
