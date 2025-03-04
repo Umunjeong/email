@@ -1,12 +1,18 @@
 import { defineConfig } from "vite";
 import { codecovVitePlugin } from "@codecov/vite-plugin";
 
+const token = process.env.VITE_CODECOV_TOKEN;
+
 export default defineConfig({
+  build: {
+    target: "esnext",
+    format: "esm",
+  },
   plugins: [
     codecovVitePlugin({
-      enableBundleAnalysis: import.meta.env.VITE_CODECOV_TOKEN !== undefined,
+      enableBundleAnalysis: token !== undefined,
       bundleName: "umunjeong-email",
-      uploadToken: import.meta.env.VITE_CODECOV_TOKEN,
+      uploadToken: token,
     }),
   ],
   server: {
