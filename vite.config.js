@@ -10,7 +10,7 @@ export default defineConfig({
   },
   plugins: [
     codecovVitePlugin({
-      enableBundleAnalysis: token !== undefined,
+      enableBundleAnalysis: token,
       bundleName: "umunjeong-email",
       uploadToken: token,
     }),
