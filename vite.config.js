@@ -1,8 +1,20 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { codecovVitePlugin } from "@codecov/vite-plugin";
+
+const token = process.env.VITE_CODECOV_TOKEN;
 
 export default defineConfig({
-  plugins: [react()],
+  build: {
+    target: "esnext",
+    format: "esm",
+  },
+  plugins: [
+    codecovVitePlugin({
+      enableBundleAnalysis: token,
+      bundleName: "umunjeong-email",
+      uploadToken: token,
+    }),
+  ],
   server: {
     port: 7777,
   },

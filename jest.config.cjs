@@ -1,3 +1,4 @@
 module.exports = {
-  testEnvironment: "jest-environment-jsdom",
+  presets: ["@babel/preset-env", "@babel/preset-react"],
+  testEnvironment: "jsdom",
 };
