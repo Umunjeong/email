@@ -1,3 +1,5 @@
+#chat - gpt를 사용하느 코드리뷰 워크플로우
+
 name: Code Review
 
 permissions:
