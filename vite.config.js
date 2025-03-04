@@ -1,16 +1,12 @@
-import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import { codecovRemixVitePlugin } from "@codecov/remix-vite-plugin";
-
+import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [
-    remix(),
-    tsconfigPaths(),
-    codecovRemixVitePlugin({
-      enableBundleAnalysis: true,
-      bundleName: "example-remix-bundle",
+    react(),
+    codecovVitePlugin({
+      enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+      bundleName: "<bundle project name>",
       uploadToken: process.env.CODECOV_TOKEN,
     }),
   ],
