@@ -4,9 +4,9 @@ import { codecovVitePlugin } from "@codecov/vite-plugin";
 export default defineConfig({
   plugins: [
     codecovVitePlugin({
-      enableBundleAnalysis: process.env.CODECOV_TOKEN !== undefined,
+      enableBundleAnalysis: import.meta.env.VITE_CODECOV_TOKEN !== undefined,
       bundleName: "umunjeong-email",
-      uploadToken: process.env.CODECOV_TOKEN,
+      uploadToken: import.meta.env.VITE_CODECOV_TOKEN,
     }),
   ],
   server: {
