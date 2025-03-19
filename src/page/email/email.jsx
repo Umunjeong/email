@@ -9,6 +9,7 @@ import {
 } from "./email.style";
 
 import Img_umunjeong_Black_Logo from "../../assets/img/Img_umunjeong_Black_Logo.png";
+import React from "react";
 
 export function Email() {
   const handleRedirect = () => {

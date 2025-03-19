@@ -37,7 +37,7 @@ jobs:
           slug: Umunjeong/email
           flags: unittests
 
-  Management_Open_merge:
+  Management_Merge_Main_Push:
     runs-on: ubuntu-latest
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     steps:
